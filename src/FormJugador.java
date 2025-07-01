@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class FormJugador {
+public class FormJugador extends JFrame{
     private JPanel Principal;
     private JTextField textField1;
     private JTextField textField2;
@@ -11,4 +11,9 @@ public class FormJugador {
     private JButton mostrarButton;
     private JButton limpiarButton;
     private JTable table1;
+
+    public FormJugador(){
+        setVisible(true);
+        setContentPane(Principal);
+    }
 }

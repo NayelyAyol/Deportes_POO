@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 public class FormLogin extends JFrame {
     private JPanel panelMain;
-    private JTextField usuariotextField1;
-    private JPasswordField passwordField1;
-    private JComboBox perfilcomboBox1;
+    private JTextField txtUsuario;
+    private JPasswordField txtContrasenia;
+    private JComboBox comboRol;
     private JButton accesoButton;
 
     public FormLogin(){
@@ -38,7 +38,22 @@ public class FormLogin extends JFrame {
         accesoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String usuario = txtUsuario.getText();
+                String contrasenia = String.valueOf(txtContrasenia.getPassword());
+                String rol = (String) comboRol.getSelectedItem();
 
+                if (usuario.isEmpty() ||  contrasenia.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Llenar los campos");
+                    return;
+                }
+                if (rol.equals("Administrador") && usuario.equals("admin") && contrasenia.equals("123")){
+                    new FormAdmin().setVisible(true);
+                    dispose();
+                }
+                if (rol.equals("Jugador") && usuario.equals("Jugar") && contrasenia.equals("123")){
+                    new FormJugador().setVisible(true);
+                    dispose();
+                }
             }
         });
     }
